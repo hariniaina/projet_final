@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
-
+  before_action :formulair, only: [:new]
   # GET /patients
   # GET /patients.json
   def index
@@ -25,7 +25,7 @@ class PatientsController < ApplicationController
   # POST /patients.json
   def create
     @patient = Patient.new(patient_params)
-
+    @patient.user = current_user
     respond_to do |format|
       if @patient.save
         format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
@@ -69,6 +69,6 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:firstname, :lastname, :phone, :date_de_naissance, :adresse)
+      params.require(:patient).permit(:firstname, :lastname, :phone, :age, :adresse)
     end
 end
