@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_01_08_091958) do
     t.string "firstname"
     t.string "lastname"
     t.string "phone"
-    t.datetime "age"
+    t.integer "age"
     t.string "adresse"
     t.bigint "user_id"
     t.datetime "created_at", null: false
